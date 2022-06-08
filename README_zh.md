@@ -11,8 +11,6 @@
 
 QtScrcpy可以通过USB(或通过TCP/IP)连接Android设备，并进行显示和控制。不需要root权限。
 
-单个应用程序最多支持16个安卓设备同时连接。
-
 同时支持GNU/Linux，Windows和MacOS三大主流桌面平台
 
 它专注于:
@@ -69,7 +67,7 @@ QtScrcpy可以通过USB(或通过TCP/IP)连接Android设备，并进行显示和
 编程语言|C|C++
 编程方式|同步|异步
 按键映射|不支持自定义|支持自定义按键映射
-编译方式|meson+gradle|Qt Creator
+编译方式|meson+gradle|qmake or CMake
 
 - 使用Qt可以非常容易的定制自己的界面
 - 基于Qt的信号槽机制的异步编程提高性能
@@ -128,7 +126,9 @@ Mac OS平台，你可以直接使用我编译好的可执行程序:
 目前只在ubuntu上测试过
 
 ## 运行
-
+### 精简模式
+在你的电脑上接入Android设备，然后运行程序，点击`一键USB连接`或者`一键WIFI连接`
+### 非精简模式
 在你的电脑上接入Android设备，然后运行程序，按顺序点击如下按钮即可连接到Android设备
 
 ![运行](screenshot/run.png)
@@ -173,7 +173,7 @@ Mac OS平台，你可以直接使用我编译好的可执行程序:
 - 屏幕录制
 - 截图为png
 - 无线连接
-- 最多支持16台设备连接（PC性能允许的情况下可以增加，需要自己编译）
+- 支持多台设备连接
 - 全屏显示
 - 窗口置顶
 - 安装apk：拖拽apk到视频窗口即可安装
@@ -241,10 +241,11 @@ Mac OS平台，你可以直接使用我编译好的可执行程序:
 尽量提供了所有依赖资源，方便傻瓜式编译。
 
 ### PC端
-1. 目标平台上搭建Qt开发环境(Qt == 5.15.2, vs == 2019 (**不支持mingw**))
-2. 克隆该项目
-3. 使用QtCreator打开项目根目录all.pro
-4. 编译，运行即可
+1. 在目标平台上搭建Qt开发环境
+Qt版本>=5.12（在Windows上使用MSVC 2019）
+2. 克隆该项目（git clone --recursive git@github.com:barry-ran/QtScrcpy.git）
+3. 使用QtCreator打开项目根目录`CMakeLists.txt`
+4. 编译，运行
 
 ### Android端 （没有修改需求的话直接使用自带的scrcpy-server即可）
 1. 目标平台上搭建Android开发环境
@@ -256,7 +257,7 @@ Mac OS平台，你可以直接使用我编译好的可执行程序:
 ## Licence
 由于是复刻的scrcpy，尊重它的Licence
 
-    Copyright (C) 2020 Barry
+    Copyright (C) 2025 Rankun
     
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
@@ -274,4 +275,4 @@ Mac OS平台，你可以直接使用我编译好的可执行程序:
 
 [Barry的CSDN](https://blog.csdn.net/rankun1)
 
-一枚普通的程序员，工作中主要使用C++进行桌面客户端开发，一毕业在山东做过一年多钢铁仿真教育软件，后来转战上海先后从事安防，在线教育相关领域工作，对音视频比较熟悉，对音视频领域如语音通话，直播教育，视频会议等相关解决方案有所了解。同时具有android，linux服务器等开发经验。
+一枚普通的程序员，工作中主要使用C++进行桌面客户端开发，一毕业在山东做过一年多钢铁仿真教育软件，后来转战上海先后从事安防，在线教育相关领域工作，对音视频比较熟悉，对音视频领域如语音通话，直播教育，视频会议等相关解决方案有所了解。同时具有Android，Linux服务器等开发经验。
